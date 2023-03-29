@@ -1,0 +1,23 @@
+
+
+// Write test to check signup route
+
+###
+POST http://192.168.100.129:4000/users/signup HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "sara@gmail.com",
+    "password": "123456",
+    "name": "Zaraaaa",
+    "phoneNo": "03360113984"
+}
+
+###
+POST http://192.168.100.129:4000/users/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "s.alishbahriaz@gmail.com",
+    "password": "12345"
+}
