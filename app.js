@@ -42,10 +42,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const ip = '192.168.18.163'; // replace with your IP address
 const port = process.env.PORT || 4000;
 
-// your routes and middleware go here
 cron.schedule('0 0 * * *', async () => { // change from one minute to one day later
   await deleteStories();
 });
@@ -55,12 +53,6 @@ cron.schedule('0 0 * * *', async () => { // change from one minute to one day la
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
-// app.listen(port, ip, () => {
-//   console.log(`Server running at http://${ip}:${port}/`);
-// });
-// const server = app.listen(4000, () => {
-//   console.log(`Server running on port ${server.address().port}`);
-// });
 
 const corsOptions = {
   origin: 'https://chatifyybackend.herokuapp.com',
