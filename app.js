@@ -42,6 +42,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+const host = '0.0.0.0';
 const port = process.env.PORT || 4000;
 
 cron.schedule('0 0 * * *', async () => { // change from one minute to one day later
@@ -50,7 +51,7 @@ cron.schedule('0 0 * * *', async () => { // change from one minute to one day la
 
 
 // start the server
-app.listen(port, () => {
+app.listen(port, host, () => {
   console.log(`Server running on port ${port}`);
 });
 
