@@ -63,7 +63,7 @@ app.listen(port, () => {
 // });
 
 const corsOptions = {
-  origin: 'https://chatifyybackend.herokuapp.com/',
+  origin: 'https://chatifyybackend.herokuapp.com',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   preflightContinue: false,
   optionsSuccessStatus: 204,
