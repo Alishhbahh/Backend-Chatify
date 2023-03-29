@@ -12,9 +12,6 @@ var indexRouter = require('./src/routes/index');
 var usersRouter = require('./src/routes/users');
 
 var app = express();
-cron.schedule('0 0 * * *', async () => { // change from one minute to one day later
-  await deleteStories();
-});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -46,20 +43,27 @@ app.use(function(err, req, res, next) {
 });
 
 const ip = '192.168.18.163'; // replace with your IP address
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 // your routes and middleware go here
+cron.schedule('0 0 * * *', async () => { // change from one minute to one day later
+  await deleteStories();
+});
+
 
 // start the server
-app.listen(port, ip, () => {
-  console.log(`Server running at http://${ip}:${port}/`);
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
-const server = app.listen(4000, () => {
-  console.log(`Server running on port ${server.address().port}`);
-});
+// app.listen(port, ip, () => {
+//   console.log(`Server running at http://${ip}:${port}/`);
+// });
+// const server = app.listen(4000, () => {
+//   console.log(`Server running on port ${server.address().port}`);
+// });
 
 const corsOptions = {
-  origin: 'exp://192.168.18.163:19000',
+  origin: 'https://chatifyybackend.herokuapp.com/',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   preflightContinue: false,
   optionsSuccessStatus: 204,
